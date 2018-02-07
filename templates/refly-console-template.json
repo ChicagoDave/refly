@@ -1,0 +1,12 @@
+{
+	"id": "refly-console-template",
+	"type": "template",
+	"textTypes": [ "score","location","time","prompt","before-notice","after-notice","main-content" ],
+	"layoutType": "console",
+	"layout": [
+		{ "action": "print", "textType": "before-notice" },
+		{ "action": "print", "textType": "main-content" },
+		{ "action": "print", "textType": "after-notice" },
+		{ "action": "print", "textType": "prompt" }
+	]
+}
