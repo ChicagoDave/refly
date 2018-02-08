@@ -41,7 +41,7 @@ namespace refly.Services
                 textTypes.Add(textType);
             }
 
-            int turn = masterService.CurrentTurn();
+            int turn = masterService.CurrentTurn;
 
 
         }

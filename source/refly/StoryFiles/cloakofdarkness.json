@@ -1,0 +1,50 @@
+﻿{
+  "refly-version": 1,
+  "story": "Cloak of Darkness",
+  "author": "David Cornelson",
+  "date": "2018-01-08",
+  "story-version": "2018.02.08.1",
+  "world": [
+    {
+      "type": "room",
+      "name": "foyer",
+      "displayName": "Foyer of the Opera House",
+      "exits": [
+        {
+          "type": "destination",
+          "direction": "s",
+          "destination": "bar",
+          "message": null,
+          "proceduure": null
+        },
+        {
+          "type": "destination",
+          "direction": "w",
+          "destination": "cloakroom",
+          "message": null,
+          "proceduure": null
+        },
+        {
+          "type": "message",
+          "direction": "n",
+          "destination": null,
+          "message": "You've only just arrived, and besides, the weather outside seems to be getting worse.",
+          "proceduure": null
+        }
+      ]
+    }
+  ],
+  "language": [
+
+  ],
+  "actions": [
+    {
+      "type": "initialize",
+      "prologue-message": "\n\nHurrying through the rainswept November night, you're glad to see the bright lights of the Opera House. It's surprising that there aren't more people about but, hey, what do you expect in a cheap demo game...?\n\n",
+      "procedures": [
+        { "action": "player is-in foyer", "display": false },
+        { "action": "player is-wearing cloak", "display": false }
+      ]
+    }
+  ]
+}

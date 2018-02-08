@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace refly.World
+namespace refly.graph
 {
-    public class Mountain : Land
+    public class Edge
     {
     }
 }

@@ -1,0 +1,27 @@
+﻿Graph structure for inflating data from story file and managing state...
+
+add thing (vertex)
+
+add foyer as room
+	with
+		name "Foyer of the Opera House"
+		s_to cloakroom
+		w_to bar
+		n_to "You've only just arrived, and besides, the weather outside seems to be getting worse."
+
+add foyer { "name": "Foyer of the Opera House" }
+match foyer is room
+match foyer has light
+match foyer south cloakroom
+match foyer west bar
+match foyer north nowhere { "message": "You've only just arrived, and besides, the weather outside seems to be getting worse." }
+
+match foyer is room, 
+add cloakroom {props}
+add person {props}
+add cloak {props}
+
+match person is-wearing cloak
+match thing to-relation (edge)|from-relation (edge) vertex
+unmatch thing to-relation (edge)|from-relation (edge) vertex
+

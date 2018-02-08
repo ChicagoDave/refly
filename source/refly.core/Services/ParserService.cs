@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace refly.World
+namespace refly.Services
 {
-    public class Land
+    public class ParserService
     {
     }
 }
