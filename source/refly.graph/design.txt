@@ -14,7 +14,7 @@ match foyer is room
 match foyer has light
 match foyer south cloakroom
 match foyer west bar
-match foyer north nowhere { "message": "You've only just arrived, and besides, the weather outside seems to be getting worse." }
+match foyer north nowhere  { "message": "You've only just arrived, and besides, the weather outside seems to be getting worse." }
 
 match foyer is room, 
 add cloakroom {props}
@@ -24,4 +24,18 @@ add cloak {props}
 match person is-wearing cloak
 match thing to-relation (edge)|from-relation (edge) vertex
 unmatch thing to-relation (edge)|from-relation (edge) vertex
+
+
+
+activities in a parser IF game
+
+movement
+interacting with objects
+changing the state of something
+print state
+print notifications
+accept commands
+evaluate a command
+determine scope of an object
+
 
