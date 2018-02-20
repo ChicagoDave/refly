@@ -29,6 +29,26 @@ unmatch thing to-relation (edge)|from-relation (edge) vertex
 
 activities in a parser IF game
 
+set starting state of world
+	player
+	locations
+		lighting
+		connections to other locations
+	mappings
+		doors
+	carryable objects
+	scenery
+
+set parser capabilities
+	verbs
+	actions
+	command evaluation
+	disambiguation
+
+set output template
+	templates
+		tokens
+
 movement
 interacting with objects
 changing the state of something
@@ -38,4 +58,12 @@ accept commands
 evaluate a command
 determine scope of an object
 
+
+create("living room")
+	.description("This is the living room")
+	.map("living room")
+		.east()
+		.to("kitchen")
+	.before()
+		.get("lantern", () {});
 
