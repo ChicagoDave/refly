@@ -4,7 +4,7 @@ refly is an experimental fluent C# Interactive Fiction platform. The /refly/Stor
 
 The platform borrows from Inform 6, 7, and FyreVM, but will compile to a .NET executable (for now).
 
-# Design Points
+## Design Points
 
 * Fluent Syntax - Everything is an object within an object.
 
@@ -81,3 +81,5 @@ The platform borrows from Inform 6, 7, and FyreVM, but will compile to a .NET ex
 
 * Templated output system - All printing requires a token (though this may change). The idea is that any given template would have a list of tokens to be replaced. When all of the processing is completed for a given turn, the print service will construct the template from all available token replacements and emit it to the console. Future versions could possible emit web templates, but that's not an initial criteria for V1. Even so, the print service will be entitely replaceable.
 * Text aggregation - The author can identify text parts and an internal service will put all of a "turn's" stored text together properly. So there could be a sentence prefix, a sentence section, and a sentence suffix. Sentences themselves can be ordered or prioritized by context. The text aggregation service will be replaceable.
+* Rules similar to Inform 7
+
