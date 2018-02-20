@@ -60,16 +60,16 @@ The platform borrows from Inform 6, 7, and FyreVM, but will compile to a .NET ex
 			.Room("foyer")
 			.Title("Foyer of the Opera House")
 			.Description("You are standing in a spacious hall, splendidly decorated in red and gold, with glittering chandeliers overhead. The entrance from the street is to the north, and there are doorways south and west.")
-			.Exit(CompassSouth, "bar")
-			.Exit(CompassWest, "cloakroom")
-			.Exit(CompassNorth, "#notice#", "You've only just arrived, and besides, the weather outside seems to be getting worse.")
+			.Exit(Compass.South, "bar")
+			.Exit(Compass.West, "cloakroom")
+			.Exit(Compass.North, "#notice#", "You've only just arrived, and besides, the weather outside seems to be getting worse.")
 			.Has({ "light" });
 
 		Create
 			.Room("cloakroom")
 			.Title("Cloakroom")
 			.Description("The walls of this small room were clearly once lined with hooks, though now only one remains. The exit is a door to the east.")
-			.Exit(CompassEast, "foyer")
+			.Exit(Compass.East, "foyer")
 			.Has({ "light" })
 
 		Create
