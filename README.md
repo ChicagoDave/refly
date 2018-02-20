@@ -37,7 +37,7 @@ The platform borrows from Inform 6, 7, and FyreVM, but will compile to a .NET ex
 
 		Create
 			.Rule("dropping the cloak rule")
-				.Instead(VerbDrop, "cloak", () => {
+				.Instead(Verb.Drop, "cloak", () => {
 					if (Player.Location("cloakroom"))
 						if (Item("cloak").Has("general"))
 						{
@@ -52,7 +52,7 @@ The platform borrows from Inform 6, 7, and FyreVM, but will compile to a .NET ex
 
 		Create
 			.Rule("taking the cloak rule")
-				.Instead(VerbTake, "cloak", () => {
+				.Instead(Verb.Take, "cloak", () => {
 					Item("bar").Has({ "light" });
 				});
 
