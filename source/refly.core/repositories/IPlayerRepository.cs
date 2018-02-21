@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace refly.core.repository
+namespace refly.core.repositories
 {
-    interface IStoryRepository
+    public interface IPlayerRepository
     {
     }
 }

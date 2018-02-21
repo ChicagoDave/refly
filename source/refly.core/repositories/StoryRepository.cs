@@ -4,7 +4,7 @@ using System.Text;
 
 using refly.core.models;
 
-namespace refly.core.repository
+namespace refly.core.repositories
 {
     public class StoryRepository : IStoryRepository
     {

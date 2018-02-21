@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 using refly.core.models;
-using refly.core.repository;
+using refly.core.services;
 
 namespace refly.core.fluent
 {
@@ -16,17 +16,19 @@ namespace refly.core.fluent
     //             .PlayerCharacter(true);
     public class Player
     {
+        static IPlayerService playerService { get; set; } = null;
+
         public static string CurrentPlayerName { get; set; }
 
         public static string Description
         {
             get
             {
-                return StoryRepository.PlayerData[CurrentPlayerName].Description;
+                return PlayerRepository.PlayerData[CurrentPlayerName].Description;
             }
             set
             {
-                StoryRepository.PlayerData[CurrentPlayerName].Description = value;
+                PlayerRepository.PlayerData[CurrentPlayerName].Description = value;
             }
         }
 
@@ -34,11 +36,11 @@ namespace refly.core.fluent
         {
             get
             {
-                return StoryRepository.PlayerData[CurrentPlayerName].Location;
+                return PlayerRepository.PlayerData[CurrentPlayerName].Location;
             }
             set
             {
-                StoryRepository.PlayerData[CurrentPlayerName].Location = value;
+                PlayerRepository.PlayerData[CurrentPlayerName].Location = value;
             }
         }
 
@@ -49,22 +51,24 @@ namespace refly.core.fluent
                 string newSwitch = sw.Remove('!');
                 if (sw.Substring(0,1) == "!")
                 {
-                    StoryRepository.PlayerData[CurrentPlayerName].Switches.Add(newSwitch, false);
+                    PlayerRepository.PlayerData[CurrentPlayerName].Switches.Add(newSwitch, false);
                 } else
                 {
-                    StoryRepository.PlayerData[CurrentPlayerName].Switches.Add(newSwitch, true);
+                    PlayerRepository.PlayerData[CurrentPlayerName].Switches.Add(newSwitch, true);
                 }
             }
         }
 
         public static bool Has(string switchName)
         {
-            return StoryRepository.PlayerData[CurrentPlayerName].Switches[switchName];
+            return PlayerRepository.PlayerData[CurrentPlayerName].Switches[switchName];
         }
 
         public static Player Create(string name)
         {
-            StoryRepository.PlayerData.Add(name, new PlayerModel() { Name = name });
+            playerService = config.AutofacConfig.Container.Resolve<IPlayerService>();
+
+            PlayerRepository.PlayerData.Add(name, new PlayerModel() { Name = name });
             Player.CurrentPlayerName = name;
 
             return new Player(); // this is a throwaway instance
