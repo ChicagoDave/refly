@@ -4,7 +4,7 @@ using System.Text;
 
 namespace refly.core.World
 {
-    public class Thing
+    public class Item
     {
         private Guid Id { get; }
         public string Name { get; }
@@ -12,7 +12,7 @@ namespace refly.core.World
         public bool IsLifeForm { get; set; } = false;
         public bool IsStatic { get; set; } = true;
 
-        public Thing(string name, string displayName)
+        public Item(string name, string displayName)
         {
             this.Id = Guid.NewGuid();
             this.Name = name;

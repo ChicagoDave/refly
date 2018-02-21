@@ -31,6 +31,67 @@ namespace refly.core.World
             }
         }
 
+        public static string Author
+        {
+            get
+            {
+                return Repository.StoryData.Author;
+            }
+            set
+            {
+                Repository.StoryData.Author = value;
+            }
+        }
+
+        public static DateTimeOffset? CreateDate
+        {
+            get
+            {
+                return Repository.StoryData.CreateDate;
+            }
+            set
+            {
+                Repository.StoryData.CreateDate = value;
+            }
+        }
+
+        public static string Version
+        {
+            get
+            {
+                return Repository.StoryData.Version;
+            }
+            set
+            {
+                Repository.StoryData.Version = value;
+            }
+        }
+
+        public static int MaximumScore
+        {
+            get
+            {
+                return Repository.StoryData.MaximumScore;
+            }
+            set
+            {
+                Repository.StoryData.MaximumScore = value;
+            }
+        }
+
+        public StoryModel StoryData
+        {
+            get
+            {
+                return Repository.StoryData;
+            }
+            set
+            {
+                Repository.StoryData = value;
+            }
+        }
+
+
         public static Story Create
         {
             get
@@ -46,26 +107,38 @@ namespace refly.core.World
     {
         public static Story Title(this Story story, string title)
         {
-            story.Title(title);
+            story.StoryData.Title = title;
             return story;
         }
 
         public static Story Headline(this Story story, string headline)
         {
-            story.Headline(headline);
+            story.StoryData.Headline = headline;
             return story;
         }
-    }
 
-    public class StoryTest
-    {
-        public StoryTest()
+        public static Story Author(this Story story, string author)
         {
-            Story.Create
-                .Title("Title")
-                .Headline("Headline");
+            story.StoryData.Author = author;
+            return story;
+        }
 
-            Console.WriteLine(Story.Title);
+        public static Story CreateDate(this Story story, string createDate)
+        {
+            story.StoryData.CreateDate = DateTimeOffset.Parse(createDate);
+            return story;
+        }
+
+        public static Story Version(this Story story, string version)
+        {
+            story.StoryData.Version = version;
+            return story;
+        }
+
+        public static Story MaximumScore(this Story story, int maximumScore)
+        {
+            story.StoryData.MaximumScore = maximumScore;
+            return story;
         }
     }
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace refly.core.World
 {
-    public class Room : Thing
+    public class Room : Item
     {
         public bool HasLight { get; set; } = true;
 

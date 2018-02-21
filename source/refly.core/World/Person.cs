@@ -4,7 +4,7 @@ using System.Text;
 
 namespace refly.core.World
 {
-    public class Person : Thing
+    public class Person : Item
     {
         public Person(string name, string displayName) : base(name, displayName) {
             this.IsLifeForm = true;
