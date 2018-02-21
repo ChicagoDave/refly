@@ -1,7 +1,7 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using refly.core.World;
+using refly.core.fluent;
 
 namespace refly.core.test
 {
@@ -17,14 +17,14 @@ namespace refly.core.test
                 .Author("David Cornelson")
                 .Version("1.0.0")
                 .CreateDate("20-Feb-2018")
-                .MaximumScore(100);
+                .MaximumScore(2);
 
             Assert.AreEqual(Story.Title, "Cloak of Darkness");
             Assert.AreEqual(Story.Headline, "An example IF story");
             Assert.AreEqual(Story.Author, "David Cornelson");
             Assert.AreEqual(Story.Version, "1.0.0");
             Assert.AreEqual(Story.CreateDate, DateTimeOffset.Parse("20-Feb-2018"));
-            Assert.AreEqual(Story.MaximumScore, 100);
+            Assert.AreEqual(Story.MaximumScore, 2);
         }
     }
 }

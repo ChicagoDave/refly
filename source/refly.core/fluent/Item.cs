@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace refly.core.World
+namespace refly.core.fluent
 {
     public class Item
     {

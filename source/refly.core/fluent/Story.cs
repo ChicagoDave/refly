@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
-namespace refly.core.World
+using refly.core.models;
+using refly.core.repository;
+
+namespace refly.core.fluent
 {
     public class Story
     {
@@ -11,11 +14,11 @@ namespace refly.core.World
         {
             get
             {
-                return Repository.StoryData.Title;
+                return StoryRepository.StoryData.Title;
             }
             set
             {
-                Repository.StoryData.Title = value;
+                StoryRepository.StoryData.Title = value;
             }
         }
 
@@ -23,11 +26,11 @@ namespace refly.core.World
         {
             get
             {
-                return Repository.StoryData.Headline;
+                return StoryRepository.StoryData.Headline;
             }
             set
             {
-                Repository.StoryData.Headline = value;
+                StoryRepository.StoryData.Headline = value;
             }
         }
 
@@ -35,11 +38,11 @@ namespace refly.core.World
         {
             get
             {
-                return Repository.StoryData.Author;
+                return StoryRepository.StoryData.Author;
             }
             set
             {
-                Repository.StoryData.Author = value;
+                StoryRepository.StoryData.Author = value;
             }
         }
 
@@ -47,11 +50,11 @@ namespace refly.core.World
         {
             get
             {
-                return Repository.StoryData.CreateDate;
+                return StoryRepository.StoryData.CreateDate;
             }
             set
             {
-                Repository.StoryData.CreateDate = value;
+                StoryRepository.StoryData.CreateDate = value;
             }
         }
 
@@ -59,11 +62,11 @@ namespace refly.core.World
         {
             get
             {
-                return Repository.StoryData.Version;
+                return StoryRepository.StoryData.Version;
             }
             set
             {
-                Repository.StoryData.Version = value;
+                StoryRepository.StoryData.Version = value;
             }
         }
 
@@ -71,11 +74,11 @@ namespace refly.core.World
         {
             get
             {
-                return Repository.StoryData.MaximumScore;
+                return StoryRepository.StoryData.MaximumScore;
             }
             set
             {
-                Repository.StoryData.MaximumScore = value;
+                StoryRepository.StoryData.MaximumScore = value;
             }
         }
 
@@ -83,20 +86,19 @@ namespace refly.core.World
         {
             get
             {
-                return Repository.StoryData;
+                return StoryRepository.StoryData;
             }
             set
             {
-                Repository.StoryData = value;
+                StoryRepository.StoryData = value;
             }
         }
-
 
         public static Story Create
         {
             get
             {
-                Repository.StoryData = new StoryModel();
+                StoryRepository.StoryData = new StoryModel();
 
                 return new Story(); // this is a throwaway instance
             }

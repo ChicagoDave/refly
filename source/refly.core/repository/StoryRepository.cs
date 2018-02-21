@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace refly.core.World
+using refly.core.models;
+
+namespace refly.core.repository
 {
-    public class Repository
+    public class StoryRepository : IStoryRepository
     {
         private static StoryModel storyData { get; set; } = null;
+        private static Dictionary<string,PlayerModel> playerData { get; set; } = null;
+
         private static List<ItemModel> items { get; set; } = null;
 
         public static StoryModel StoryData
@@ -25,17 +29,26 @@ namespace refly.core.World
                 storyData = value;
             }
         }
+
+        public static Dictionary<string,PlayerModel> PlayerData
+        {
+            get
+            {
+                if (playerData == null)
+                {
+                    playerData = new Dictionary<string, PlayerModel>();
+                }
+
+                return playerData;
+            }
+            set
+            {
+                playerData = value;
+            }
+        }
+
     }
 
-    public class StoryModel
-    {
-        public string Title { get; set; }
-        public string Headline { get; set; }
-        public string Author { get; set; }
-        public DateTimeOffset? CreateDate { get; set; }
-        public string Version { get; set; }
-        public int MaximumScore { get; set; }
-    }
 
     public class ItemModel
     {
