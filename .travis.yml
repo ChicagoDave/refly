@@ -1,2 +1,2 @@
 language: csharp
-solution: refly.sln
+solution: source/refly.sln
