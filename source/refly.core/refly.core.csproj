@@ -5,12 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Templates\React\" />
+    <Folder Include="config\" />
+    <Folder Include="language\" />
+    <Folder Include="templates\React\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.6.2" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\refly.graph\refly.graph.csproj" />
   </ItemGroup>
 
 </Project>

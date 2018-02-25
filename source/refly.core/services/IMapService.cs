@@ -6,9 +6,8 @@ using refly.core.models;
 
 namespace refly.core.services
 {
-    public interface IPlayerService
+    public interface IMapService
     {
-        PlayerModel Get(string name);
-        void Save(PlayerModel player);
+        void AddLocation(MapModel mappping);
     }
 }

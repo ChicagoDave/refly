@@ -6,9 +6,8 @@ using refly.core.models;
 
 namespace refly.core.services
 {
-    public interface IPlayerService
+    public interface IStoryService
     {
-        PlayerModel Get(string name);
-        void Save(PlayerModel player);
+        StoryModel StoryData { get; set; }
     }
 }

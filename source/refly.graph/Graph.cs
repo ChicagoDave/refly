@@ -56,5 +56,15 @@ namespace refly.graph
 
             labels.Add(connector.ToLower());
         }
+
+        public IEnumerable<T> Match<T>(string vertex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Save<T>(string vertex, T data)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

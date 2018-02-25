@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
+using refly.core.models;
+
 namespace refly.core.repositories
 {
-    interface IStoryRepository
+    public interface IStoryRepository
     {
+        void Save(StoryModel story);
+        StoryModel Get();
     }
 }

@@ -4,7 +4,9 @@ using System.Text;
 
 using Autofac;
 
-using refly.Services;
+using refly.core.services;
+using refly.core.repositories;
+using refly.graph;
 
 namespace refly.Configuration
 {
@@ -28,11 +30,17 @@ namespace refly.Configuration
         {
             ContainerBuilder builder = new ContainerBuilder();
 
-            builder.RegisterType<MasterService>().As<IMasterService>().SingleInstance();
-            builder.RegisterType<WorldService>().As<IWorldService>().SingleInstance();
-            builder.RegisterType<LanguageService>().As<ILanguageService>().SingleInstance();
-            builder.RegisterType<ParserService>().As<IParserService>().SingleInstance();
-            builder.RegisterType<PrintService>().As<IPrintService>().SingleInstance();
+            builder.RegisterType<Graph>().As<IGraph>().SingleInstance();
+            builder.RegisterType<StoryService>().As<IStoryService>().SingleInstance();
+            builder.RegisterType<StoryRepository>().As<IStoryRepository>().SingleInstance();
+            builder.RegisterType<PlayerService>().As<IPlayerService>().SingleInstance();
+            builder.RegisterType<PlayerRepository>().As<IPlayerRepository>().SingleInstance();
+
+            //builder.RegisterType<MasterService>().As<IMasterService>().SingleInstance();
+            //builder.RegisterType<WorldService>().As<IWorldService>().SingleInstance();
+            //builder.RegisterType<LanguageService>().As<ILanguageService>().SingleInstance();
+            //builder.RegisterType<ParserService>().As<IParserService>().SingleInstance();
+            //builder.RegisterType<PrintService>().As<IPrintService>().SingleInstance();
 
             container = builder.Build();
         }

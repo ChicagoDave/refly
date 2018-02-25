@@ -2,56 +2,29 @@
 using System.Collections.Generic;
 using System.Text;
 
+using refly.graph;
 using refly.core.models;
+using System.Linq;
 
 namespace refly.core.repositories
 {
     public class StoryRepository : IStoryRepository
     {
-        private static StoryModel storyData { get; set; } = null;
-        private static Dictionary<string,PlayerModel> playerData { get; set; } = null;
+        private IGraph graph = null;
 
-        private static List<ItemModel> items { get; set; } = null;
-
-        public static StoryModel StoryData
+        public StoryRepository(IGraph graph)
         {
-            get
-            {
-                if (storyData == null)
-                {
-                    storyData = new StoryModel();
-                }
-
-                return storyData;
-            }
-            set
-            {
-                storyData = value;
-            }
+            this.graph = graph;
         }
 
-        public static Dictionary<string,PlayerModel> PlayerData
+        public StoryModel Get()
         {
-            get
-            {
-                if (playerData == null)
-                {
-                    playerData = new Dictionary<string, PlayerModel>();
-                }
-
-                return playerData;
-            }
-            set
-            {
-                playerData = value;
-            }
+            return graph.Match<StoryModel>("Story").FirstOrDefault<StoryModel>();
         }
 
-    }
-
-
-    public class ItemModel
-    {
-        public string Name { get; set; }
+        public void Save(StoryModel story)
+        {
+            graph.Save<StoryModel>("Story", story);
+        }
     }
 }

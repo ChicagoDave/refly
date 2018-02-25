@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2036
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "refly", "refly\refly.csproj", "{2D1808EA-BC8A-485C-89CF-8EAB36DFB199}"
 EndProject
@@ -9,7 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "refly.core", "refly.core\re
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "refly.graph", "refly.graph\refly.graph.csproj", "{81DD2E19-50E3-4243-B38F-0FEF7D8E264D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "refly.core.test", "refly.core.test\refly.core.test.csproj", "{24A46841-20A6-4E36-BFAC-23AA413AD1A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "refly.core.test", "refly.core.test\refly.core.test.csproj", "{24A46841-20A6-4E36-BFAC-23AA413AD1A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "refly.language.english", "refly.language.english\refly.language.english.csproj", "{0D413947-D590-4D46-98A3-1C3F38543405}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "refly.language", "refly.language\refly.language.csproj", "{5DF06ACA-029C-4CA4-8F9A-CBA1EAF68DF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "refly.parser", "refly.parser\refly.parser.csproj", "{05083256-7EF4-4EDA-8881-84184A917657}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +39,18 @@ Global
 		{24A46841-20A6-4E36-BFAC-23AA413AD1A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24A46841-20A6-4E36-BFAC-23AA413AD1A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24A46841-20A6-4E36-BFAC-23AA413AD1A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D413947-D590-4D46-98A3-1C3F38543405}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D413947-D590-4D46-98A3-1C3F38543405}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D413947-D590-4D46-98A3-1C3F38543405}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D413947-D590-4D46-98A3-1C3F38543405}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DF06ACA-029C-4CA4-8F9A-CBA1EAF68DF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DF06ACA-029C-4CA4-8F9A-CBA1EAF68DF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DF06ACA-029C-4CA4-8F9A-CBA1EAF68DF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DF06ACA-029C-4CA4-8F9A-CBA1EAF68DF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05083256-7EF4-4EDA-8881-84184A917657}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05083256-7EF4-4EDA-8881-84184A917657}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05083256-7EF4-4EDA-8881-84184A917657}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05083256-7EF4-4EDA-8881-84184A917657}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

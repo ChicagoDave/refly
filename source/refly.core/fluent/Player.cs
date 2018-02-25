@@ -20,15 +20,29 @@ namespace refly.core.fluent
 
         public static string CurrentPlayerName { get; set; }
 
+        public Player() { }
+
+        public Player(IPlayerService playerService)
+        {
+            Player.playerService = playerService;
+        }
+
         public static string Description
         {
             get
             {
-                return PlayerRepository.PlayerData[CurrentPlayerName].Description;
+                if (CurrentPlayerName == null)
+                {
+                    throw new Exception("Fluent interaction requires using .Create(playerName) first.");
+                }
+
+                return playerService.Get(CurrentPlayerName).Description;
             }
             set
             {
-                PlayerRepository.PlayerData[CurrentPlayerName].Description = value;
+                PlayerModel player = playerService.Get(CurrentPlayerName);
+                player.Description = value;
+                playerService.Save(player);
             }
         }
 
@@ -36,39 +50,24 @@ namespace refly.core.fluent
         {
             get
             {
-                return PlayerRepository.PlayerData[CurrentPlayerName].Location;
+                if (CurrentPlayerName == null)
+                {
+                    throw new Exception("Fluent interaction requires using .Create(playerName) first.");
+                }
+
+                return playerService.Get(CurrentPlayerName).Location;
             }
             set
             {
-                PlayerRepository.PlayerData[CurrentPlayerName].Location = value;
+                PlayerModel player = playerService.Get(CurrentPlayerName);
+                player.Location = value;
+                playerService.Save(player);
             }
-        }
-
-        public static void Has(List<string> switches)
-        {
-            foreach(string sw in switches)
-            {
-                string newSwitch = sw.Remove('!');
-                if (sw.Substring(0,1) == "!")
-                {
-                    PlayerRepository.PlayerData[CurrentPlayerName].Switches.Add(newSwitch, false);
-                } else
-                {
-                    PlayerRepository.PlayerData[CurrentPlayerName].Switches.Add(newSwitch, true);
-                }
-            }
-        }
-
-        public static bool Has(string switchName)
-        {
-            return PlayerRepository.PlayerData[CurrentPlayerName].Switches[switchName];
         }
 
         public static Player Create(string name)
         {
-            playerService = config.AutofacConfig.Container.Resolve<IPlayerService>();
-
-            PlayerRepository.PlayerData.Add(name, new PlayerModel() { Name = name });
+            playerService.Save(new PlayerModel() { Name = name });
             Player.CurrentPlayerName = name;
 
             return new Player(); // this is a throwaway instance

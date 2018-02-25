@@ -6,6 +6,7 @@ namespace refly.graph
 {
     public interface IGraph
     {
-        void Match(Vertex fromNode, Edge connection, Vertex toNode);
+        IEnumerable<T> Match<T>(string vertex);
+        void Save<T>(string vertex, T data);
     }
 }

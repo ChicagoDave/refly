@@ -4,21 +4,30 @@ using System.ComponentModel;
 using System.Text;
 
 using refly.core.models;
-using refly.core.repository;
+using refly.core.services;
 
 namespace refly.core.fluent
 {
     public class Story
     {
+        private static IStoryService storyService = null;
+
+        public Story() { }
+
+        public Story(IStoryService storyService)
+        {
+            Story.storyService = storyService;
+        }
+
         public static string Title
         {
             get
             {
-                return StoryRepository.StoryData.Title;
+                return storyService.StoryData.Title;
             }
             set
             {
-                StoryRepository.StoryData.Title = value;
+                storyService.StoryData.Title = value;
             }
         }
 
@@ -26,11 +35,11 @@ namespace refly.core.fluent
         {
             get
             {
-                return StoryRepository.StoryData.Headline;
+                return storyService.StoryData.Headline;
             }
             set
             {
-                StoryRepository.StoryData.Headline = value;
+                storyService.StoryData.Headline = value;
             }
         }
 
@@ -38,11 +47,11 @@ namespace refly.core.fluent
         {
             get
             {
-                return StoryRepository.StoryData.Author;
+                return storyService.StoryData.Author;
             }
             set
             {
-                StoryRepository.StoryData.Author = value;
+                storyService.StoryData.Author = value;
             }
         }
 
@@ -50,11 +59,11 @@ namespace refly.core.fluent
         {
             get
             {
-                return StoryRepository.StoryData.CreateDate;
+                return storyService.StoryData.CreateDate;
             }
             set
             {
-                StoryRepository.StoryData.CreateDate = value;
+                storyService.StoryData.CreateDate = value;
             }
         }
 
@@ -62,11 +71,11 @@ namespace refly.core.fluent
         {
             get
             {
-                return StoryRepository.StoryData.Version;
+                return storyService.StoryData.Version;
             }
             set
             {
-                StoryRepository.StoryData.Version = value;
+                storyService.StoryData.Version = value;
             }
         }
 
@@ -74,11 +83,11 @@ namespace refly.core.fluent
         {
             get
             {
-                return StoryRepository.StoryData.MaximumScore;
+                return storyService.StoryData.MaximumScore;
             }
             set
             {
-                StoryRepository.StoryData.MaximumScore = value;
+                storyService.StoryData.MaximumScore = value;
             }
         }
 
@@ -86,11 +95,11 @@ namespace refly.core.fluent
         {
             get
             {
-                return StoryRepository.StoryData;
+                return storyService.StoryData;
             }
             set
             {
-                StoryRepository.StoryData = value;
+                storyService.StoryData = value;
             }
         }
 
@@ -98,7 +107,7 @@ namespace refly.core.fluent
         {
             get
             {
-                StoryRepository.StoryData = new StoryModel();
+                storyService.StoryData = new StoryModel();
 
                 return new Story(); // this is a throwaway instance
             }
