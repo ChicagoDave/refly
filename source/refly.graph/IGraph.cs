@@ -6,7 +6,7 @@ namespace refly.graph
 {
     public interface IGraph
     {
-        IEnumerable<T> Match<T>(string vertex);
+        IEnumerable<T> Match<T>(string vertex, Dictionary<string,string> props);
         void Save<T>(string vertex, T data);
     }
 }

@@ -20,23 +20,6 @@ namespace refly.graph
             edges = new List<Edge>();
         }
 
-        public void Match(Vertex fromNode, Edge connection, Vertex toNode)
-        {
-            AddLabel(fromNode.Label);
-            AddLabel(toNode.Label);
-            AddConnector(connection.Label);
-
-            var findFromNode = nodes.Where<Vertex>(n => n.Label == fromNode.Label.ToLower()).FirstOrDefault<Vertex>();
-
-            if (findFromNode != null)
-            {
-                
-            } else
-            {
-                nodes.Add(fromNode);
-            }
-        }
-
         private void AddLabel(string label)
         {
             if (labels.Where<string>(l => l == label.ToLower()).Count<string>() > 0)
@@ -57,9 +40,41 @@ namespace refly.graph
             labels.Add(connector.ToLower());
         }
 
-        public IEnumerable<T> Match<T>(string vertex)
+        public IEnumerable<T> Match<T>(string vertex, Dictionary<string, string> props)
         {
-            throw new NotImplementedException();
+
+            var list = (from Vertex n in nodes where n.Label == vertex select n).ToList<Vertex>();
+
+            if (props == null)
+            {
+                return (IEnumerable<T>)list;
+            }
+
+            List<Vertex> finalList = new List<Vertex>();
+            foreach (Vertex node in list)
+            {
+                bool check = true;
+                foreach (string prop in props.Keys)
+                {
+                    if (node.Properties.Keys.Contains<string>(prop))
+                    {
+                        if (node.Properties[prop] != props[prop])
+                        {
+                            check = false;
+                        }
+                    } else
+                    {
+                        check = false;
+                    }
+                }
+
+                if (check)
+                {
+                    finalList.Add(node);
+                }
+            }
+
+            return (IEnumerable<T>)finalList;
         }
 
         public void Save<T>(string vertex, T data)

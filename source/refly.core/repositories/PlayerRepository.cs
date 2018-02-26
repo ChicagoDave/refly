@@ -19,7 +19,7 @@ namespace refly.core.repositories
 
         public PlayerModel Get()
         {
-            return graph.Match<PlayerModel>("Player").FirstOrDefault<PlayerModel>();
+            return graph.Match<PlayerModel>("Player", null).FirstOrDefault<PlayerModel>();
         }
 
         public void Save(PlayerModel player)
