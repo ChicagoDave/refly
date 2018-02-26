@@ -3,6 +3,6 @@ solution: source/refly.sln
 dist: trusty
 sudo: required
 mono: none
-dotnet: 2.0.5
+dotnet: 2.1.4
 script:
   - ./build.sh --quiet verify
