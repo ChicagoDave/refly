@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-using refly.core.models;
+using refly.models;
 using refly.core.repositories;
 
 namespace refly.core.services

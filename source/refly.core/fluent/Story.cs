@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
-using refly.core.models;
+using refly.graph.core;
+using refly.models;
 using refly.core.services;
 
 namespace refly.core.fluent

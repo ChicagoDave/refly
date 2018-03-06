@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace refly.core.models
+using refly.graph.core;
+
+namespace refly.models
 {
-    public class StoryModel
+    public class StoryModel : IVertex
     {
+        public Guid Id { get; set; }
+        public string Label { get; set; }
+        public Dictionary<string, string> Properties { get; set; }
         public string Title { get; set; }
         public string Headline { get; set; }
         public string Author { get; set; }

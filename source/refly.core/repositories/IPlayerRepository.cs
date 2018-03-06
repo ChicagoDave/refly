@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-using refly.core.models;
+using refly.models;
 
 namespace refly.core.repositories
 {
     public interface IPlayerRepository
     {
         void Save(PlayerModel story);
-        PlayerModel Get();
+        PlayerModel Get(Guid id);
     }
 }

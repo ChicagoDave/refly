@@ -16,7 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\refly.graph.core\refly.graph.core.csproj" />
     <ProjectReference Include="..\refly.graph\refly.graph.csproj" />
+    <ProjectReference Include="..\refly.models\refly.models.csproj" />
   </ItemGroup>
 
 </Project>

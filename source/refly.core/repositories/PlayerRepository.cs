@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using refly.graph.core;
 using refly.graph;
-using refly.core.models;
+using refly.models;
 
 namespace refly.core.repositories
 {
@@ -17,14 +18,14 @@ namespace refly.core.repositories
             this.graph = graph;
         }
 
-        public PlayerModel Get()
+        public PlayerModel Get(Guid id)
         {
-            return graph.Match<PlayerModel>("Player", null).FirstOrDefault<PlayerModel>();
+            return graph.Match<PlayerModel>("Player", id,  null).FirstOrDefault<PlayerModel>();
         }
 
         public void Save(PlayerModel player)
         {
-            graph.Save<PlayerModel>("Player", player);
+            graph.Save<PlayerModel>("player", player, null);
         }
     }
 }

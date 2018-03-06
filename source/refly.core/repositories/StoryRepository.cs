@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 using refly.graph;
-using refly.core.models;
+using refly.models;
 using System.Linq;
 
 namespace refly.core.repositories
@@ -19,12 +19,12 @@ namespace refly.core.repositories
 
         public StoryModel Get()
         {
-            return graph.Match<StoryModel>("Story", null).FirstOrDefault<StoryModel>();
+            return graph.Match<StoryModel>("story", null, null).FirstOrDefault<StoryModel>();
         }
 
         public void Save(StoryModel story)
         {
-            graph.Save<StoryModel>("Story", story);
+            graph.Save<StoryModel>("story", story, null);
         }
     }
 }
