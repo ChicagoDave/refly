@@ -19,12 +19,20 @@ namespace refly.core.repositories
 
         public StoryModel Get()
         {
-            return graph.Match<StoryModel>("story", null, null).FirstOrDefault<StoryModel>();
+            return graph.Match<StoryModel>("Story", null, null).FirstOrDefault<StoryModel>();
         }
 
         public void Save(StoryModel story)
         {
-            graph.Save<StoryModel>("story", story, null);
+            if (story.Id == null)
+            {
+                graph.Create<StoryModel>("Story", story, null);
+                return;
+            }
+
+            StoryModel current = Get();
+
+            graph.Set<StoryModel>("Story", story, null);
         }
     }
 }

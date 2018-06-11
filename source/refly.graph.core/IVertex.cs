@@ -6,7 +6,7 @@ namespace refly.graph.core
 {
     public interface IVertex
     {
-        Guid Id { get; set; }
+        Guid? Id { get; set; }
         string Label { get; set; }
         Dictionary<string, string> Properties { get; set; }
     }

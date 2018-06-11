@@ -36,12 +36,6 @@ namespace refly.Configuration
             builder.RegisterType<PlayerService>().As<IPlayerService>().SingleInstance();
             builder.RegisterType<PlayerRepository>().As<IPlayerRepository>().SingleInstance();
 
-            //builder.RegisterType<MasterService>().As<IMasterService>().SingleInstance();
-            //builder.RegisterType<WorldService>().As<IWorldService>().SingleInstance();
-            //builder.RegisterType<LanguageService>().As<ILanguageService>().SingleInstance();
-            //builder.RegisterType<ParserService>().As<IParserService>().SingleInstance();
-            //builder.RegisterType<PrintService>().As<IPrintService>().SingleInstance();
-
             container = builder.Build();
         }
     }

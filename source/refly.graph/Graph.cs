@@ -20,7 +20,6 @@ namespace refly.graph
 
         public Graph()
         {
-            labels = new List<string>();
             connectors = new List<string>();
             nodes = new List<IVertex>();
             edges = new List<IEdge>();
@@ -91,17 +90,71 @@ namespace refly.graph
             return finalList;
         }
 
-        public void Save<T>(string label, T data, Dictionary<string, string> props) where T : IVertex, new()
+        /// <summary>
+        /// Create a new node (vertex)
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="label"></param>
+        /// <param name="data"></param>
+        /// <param name="props"></param>
+        public T Create<T>(string label, T data, Dictionary<string, string> props) where T : IVertex, new()
         {
             T lookup = default(T);
 
             var id = ((IVertex)data).Id;
 
-            if (id != null)
+            var modelProps = typeof(T).GetProperties();
+
+            lookup = Graph.GetObject<T>();
+
+            lookup.Id = Guid.NewGuid();
+            lookup.Label = label;
+
+            foreach (PropertyInfo prop in modelProps)
+                if (prop.Name != "Id" && prop.Name != "Label" && prop.Name != "Properties")
+                    SetProperty<T>(ref lookup, prop.Name, prop.GetValue(data));
+
+            nodes.Add(lookup);
+
+            if (props != null)
             {
-                lookup = (from T n in nodes where n.Id == id select n).FirstOrDefault<T>();
+                foreach (string prop in props.Keys)
+                {
+                    if (lookup.Properties.ContainsKey(prop))
+                    {
+                        lookup.Properties[prop] = props[prop];
+                    }
+                    else
+                    {
+                        lookup.Properties.Add(prop, props[prop]);
+                    }
+                }
             }
 
+            return lookup;
+        }
+
+        /// <summary>
+        /// Create a new node (vertex)
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="label"></param>
+        /// <param name="data"></param>
+        /// <param name="props"></param>
+        public T Set<T>(string label, T data, Dictionary<string, string> props) where T : IVertex, new()
+        {
+            T lookup = default(T);
+
+            var id = ((IVertex)data).Id;
+
+            var modelProps = typeof(T).GetProperties();
+
+            if (id == null)
+            {
+
+            }
+
+            // 
             if (lookup == null)
             {
                 lookup = Graph.GetObject<T>();
@@ -109,19 +162,29 @@ namespace refly.graph
                 lookup.Id = Guid.NewGuid();
                 lookup.Label = label;
 
+                foreach (PropertyInfo prop in modelProps)
+                    if (prop.Name != "Id" && prop.Name != "Label" && prop.Name != "Properties")
+                        SetProperty<T>(ref lookup, prop.Name, prop.GetValue(data));
+
                 nodes.Add(lookup);
             }
 
-            foreach (string prop in props.Keys)
+            if (props != null)
             {
-                if (lookup.Properties.ContainsKey(prop))
+                foreach (string prop in props.Keys)
                 {
-                    lookup.Properties[prop] = props[prop];
-                } else
-                {
-                    lookup.Properties.Add(prop, props[prop]);
+                    if (lookup.Properties.ContainsKey(prop))
+                    {
+                        lookup.Properties[prop] = props[prop];
+                    }
+                    else
+                    {
+                        lookup.Properties.Add(prop, props[prop]);
+                    }
                 }
             }
+
+            return lookup;
         }
 
         public static T GetObject<T>() where T : new()
@@ -137,6 +200,15 @@ namespace refly.graph
         public void Disconnect<T, U>(T nodeA, IEdge edge, U nodeB)
         {
             throw new NotImplementedException();
+        }
+
+        private void SetProperty<T>(ref T model, string name, object value)
+        {
+            PropertyInfo prop = typeof(T).GetProperty(name);
+            if (null != prop && prop.CanWrite)
+            {
+                prop.SetValue(model, value, null);
+            }
         }
     }
 }

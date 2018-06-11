@@ -25,7 +25,15 @@ namespace refly.core.repositories
 
         public void Save(PlayerModel player)
         {
-            graph.Save<PlayerModel>("player", player, null);
+            if (player.Id == null)
+            {
+                graph.Create<PlayerModel>("Player", player, null);
+                return;
+            }
+
+            PlayerModel current = Get((Guid)player.Id);
+
+            graph.Set<PlayerModel>("Player", player, null);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace refly.models
 {
     public class StoryModel : IVertex
     {
-        public Guid Id { get; set; }
+        public Guid? Id { get; set; }
         public string Label { get; set; }
         public Dictionary<string, string> Properties { get; set; }
         public string Title { get; set; }
