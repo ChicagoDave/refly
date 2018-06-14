@@ -13,8 +13,6 @@ namespace refly.graph.test
     [TestClass]
     public class GraphTests
     {
-        private static IContainer container = null;
-
         IGraph graph = null;
 
         [TestInitialize]

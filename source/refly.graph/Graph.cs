@@ -90,6 +90,16 @@ namespace refly.graph
             return finalList;
         }
 
+        public IEdge CreateEdge(string label, IVertex vertexLeft, IVertex vertexRight, Dictionary<string,string> props)
+        {
+            return null;
+        }
+
+        public IEdge UpdateEdge(string label, IVertex vertexLeft, IVertex vertexRight, Dictionary<string, string> props)
+        {
+            return null;
+        }
+
         /// <summary>
         /// Create a new node (vertex)
         /// </summary>
@@ -97,7 +107,7 @@ namespace refly.graph
         /// <param name="label"></param>
         /// <param name="data"></param>
         /// <param name="props"></param>
-        public T Create<T>(string label, T data, Dictionary<string, string> props) where T : IVertex, new()
+        public T CreateVertex<T>(string label, T data, Dictionary<string, string> props) where T : IVertex, new()
         {
             T lookup = default(T);
 
@@ -141,7 +151,7 @@ namespace refly.graph
         /// <param name="label"></param>
         /// <param name="data"></param>
         /// <param name="props"></param>
-        public T Set<T>(string label, T data, Dictionary<string, string> props) where T : IVertex, new()
+        public T UpdateVertex<T>(string label, T data, Dictionary<string, string> props) where T : IVertex, new()
         {
             T lookup = default(T);
 
@@ -151,10 +161,11 @@ namespace refly.graph
 
             if (id == null)
             {
-
+                throw new Exception("Object Id cannot be NULL.");
             }
 
-            // 
+            lookup = (from IVertex v in nodes where v.Id == id select (T)v).FirstOrDefault<T>();
+
             if (lookup == null)
             {
                 lookup = Graph.GetObject<T>();
@@ -166,20 +177,18 @@ namespace refly.graph
                     if (prop.Name != "Id" && prop.Name != "Label" && prop.Name != "Properties")
                         SetProperty<T>(ref lookup, prop.Name, prop.GetValue(data));
 
-                nodes.Add(lookup);
-            }
-
-            if (props != null)
-            {
-                foreach (string prop in props.Keys)
+                if (props != null)
                 {
-                    if (lookup.Properties.ContainsKey(prop))
+                    foreach (string prop in props.Keys)
                     {
-                        lookup.Properties[prop] = props[prop];
-                    }
-                    else
-                    {
-                        lookup.Properties.Add(prop, props[prop]);
+                        if (lookup.Properties.ContainsKey(prop))
+                        {
+                            lookup.Properties[prop] = props[prop];
+                        }
+                        else
+                        {
+                            lookup.Properties.Add(prop, props[prop]);
+                        }
                     }
                 }
             }

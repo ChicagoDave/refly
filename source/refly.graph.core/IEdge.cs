@@ -6,6 +6,7 @@ namespace refly.graph.core
 {
     public interface IEdge
     {
+        Guid? Id { get; set; }
         string Label { get; set; }
         Dictionary<string, string> Properties { get; set; }
         List<IVertex> FromNode { get; set; }

@@ -8,6 +8,7 @@ namespace refly.graph.edges
 {
     public class EdgeBase : IEdge
     {
+        public virtual Guid? Id { get; set; }
         public virtual string Label { get; set; }
         public virtual Dictionary<string, string> Properties { get; set; }
         public virtual List<IVertex> FromNode { get; set; }
